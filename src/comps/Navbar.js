@@ -10,6 +10,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -31,16 +32,16 @@ export default function Navbar() {
   return (
     <AppBar>
       <Toolbar>
-        <IconButton color="inherit" href="/" sx={{ mr: 3 }}>
+        <IconButton color="inherit" component={Link} to="/" sx={{ mr: 3 }}>
           <HomeIcon />
         </IconButton>
-        <Typography href="/" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           WeasUTP
         </Typography>
         <Button color="inherit" onClick={handleOpen}>
           Changelog
         </Button>
-        <Button color="inherit" href="/acerca">
+        <Button color="inherit" component={Link} to="/acerca">
           Acerca de
         </Button>
 
