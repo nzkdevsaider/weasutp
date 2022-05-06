@@ -1,12 +1,13 @@
 {
   "files": {
-    "main.js": "/weasutp/static/js/main.efc007a9.js",
+    "main.js": "/weasutp/static/js/main.0d80add1.js",
     "static/js/787.77af3770.chunk.js": "/weasutp/static/js/787.77af3770.chunk.js",
     "index.html": "/weasutp/index.html",
-    "main.efc007a9.js.map": "/weasutp/static/js/main.efc007a9.js.map",
+    "static/media/changelog.md": "/weasutp/static/media/changelog.845b4ad7261690706568.md",
+    "main.0d80add1.js.map": "/weasutp/static/js/main.0d80add1.js.map",
     "787.77af3770.chunk.js.map": "/weasutp/static/js/787.77af3770.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.efc007a9.js"
+    "static/js/main.0d80add1.js"
   ]
 }
