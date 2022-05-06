@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import HomeIcon from "@mui/icons-material/Home";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ReactMarkdown from "react-markdown";
@@ -16,6 +17,8 @@ import changelog from "./../changelog.md";
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [log, setLog] = React.useState();
+
+  const { repository } = require("./../../package.json");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -35,10 +38,11 @@ export default function Navbar() {
     .then((r) => r.text())
     .then((text) => {
       setLog(text);
-    }).catch(e => {
+    })
+    .catch((e) => {
       console.error(e);
       setLog("**De momento no hay notas de la versión.**");
-    })
+    });
 
   return (
     <AppBar>
@@ -49,6 +53,9 @@ export default function Navbar() {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           WeasUTP
         </Typography>
+        <IconButton color="inherit" href={repository.url} target="_blank" sx={{ mr: 3 }}>
+          <GitHubIcon />
+        </IconButton>
         <Button color="inherit" onClick={handleOpen}>
           Changelog
         </Button>
