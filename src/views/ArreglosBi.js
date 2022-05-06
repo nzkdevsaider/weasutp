@@ -74,7 +74,7 @@ export default function ArreglosBi() {
           <Typography variant="h3" component="div">
             Arreglos bidimensionales
           </Typography>
-          <Chip icon={<AutoAwesomeIcon />} label="Beta" />
+          <Chip icon={<AutoAwesomeIcon />} label="Arreglos" />
           <Typography variant="body1" component="div">
             Herramienta para encontrar la localización de un elemento de un
             arreglo bidimensional (2 dimensiones) determinado.

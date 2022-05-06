@@ -18,7 +18,7 @@ export default function Home() {
             ¡Bienvenido/a a WeasUTP!
           </Typography>
           <Typography variant="subtitle1" component="span">
-          v{version}
+            v{version}
           </Typography>
           <Typography variant="body1" component="p">
             Página web de utilidades especializada en agilizar tareas para
@@ -26,7 +26,13 @@ export default function Home() {
             <Link to="/acerca">esta página</Link>!
           </Typography>
           <Typography variant="body1" component="p">
-            Utilidades disponibles: <br />
+            <br/>
+            Utilidades disponibles:
+            <br />
+            <Link to="/arreglos/unidimensionales">
+              Arreglos unidimensionales
+            </Link>
+            <br />
             <Link to="/arreglos/bidimensionales">Arreglos bidimensionales</Link>
             <br />
             <Link to="/arreglos/multidimensionales">

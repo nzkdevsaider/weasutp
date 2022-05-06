@@ -91,10 +91,10 @@ export default function ArreglosMulti() {
           <Typography variant="h3" component="div">
             Arreglos multidimensionales
           </Typography>
-          <Chip icon={<AutoAwesomeIcon />} label="Beta" />
+          <Chip icon={<AutoAwesomeIcon />} label="Arreglos" />
           <Typography variant="body1" component="div">
             Herramienta para encontrar la localización de un elemento de un
-            arreglo multidimensional (3 dimensiones) determinado.
+            arreglo multidimensional (3 dimensiones máximo) determinado.
           </Typography>
           <Button href={process.env.PUBLIC_URL + '/docs/arreglos/estruccomp_p5.pdf'} target="_blank" variant="outlined" startIcon={<PictureAsPdfIcon />}>
             Leer teoría
