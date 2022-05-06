@@ -11,9 +11,12 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+import changelog from "./../changelog.md";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const [log, setLog] = React.useState();
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const style = {
@@ -28,7 +31,15 @@ export default function Navbar() {
     p: 4,
   };
 
-  const changelogContent = "**No disponible de momento.**";
+  fetch(changelog)
+    .then((r) => r.text())
+    .then((text) => {
+      setLog(text);
+    }).catch(e => {
+      console.error(e);
+      setLog("**De momento no hay notas de la versión.**");
+    })
+
   return (
     <AppBar>
       <Toolbar>
@@ -53,10 +64,10 @@ export default function Navbar() {
         >
           <Box sx={style}>
             <Typography id="changelog-title" variant="h6" component="h2">
-              Notas de cambios de la versión
+              Notas de las versiones
             </Typography>
             <Typography id="changelog-desc" sx={{ mt: 2 }}>
-              <ReactMarkdown>{changelogContent}</ReactMarkdown>
+              <ReactMarkdown>{log}</ReactMarkdown>
             </Typography>
           </Box>
         </Modal>

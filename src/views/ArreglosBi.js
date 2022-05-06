@@ -9,19 +9,16 @@ import TextField from "@mui/material/TextField";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
-export default function ArreglosMulti() {
+export default function ArreglosBi() {
   const [locMode, setLocMode] = React.useState("1");
   const [limInfA, setLimInfA] = React.useState(0);
   const [limSupA, setLimSupA] = React.useState(0);
   const [limInfB, setLimInfB] = React.useState(0);
   const [limSupB, setLimSupB] = React.useState(0);
-  const [limInfC, setLimInfC] = React.useState(0);
-  const [limSupC, setLimSupC] = React.useState(0);
   const [compA, setCompA] = React.useState(0);
   const [compB, setCompB] = React.useState(0);
-  const [compC, setCompC] = React.useState(0);
-  const [dirBase, setDirBase] = React.useState(1000);
-  const [wbyte, setWByte] = React.useState(4);
+  const [dirBase, setDirBase] = React.useState(2000);
+  const [wbyte, setWByte] = React.useState(2);
 
   /* Change Events */
   const locChange = (event) => {
@@ -34,17 +31,11 @@ export default function ArreglosMulti() {
   const limInfBChange = (event) => {
     setLimInfB(event.target.value);
   };
-  const limInfCChange = (event) => {
-    setLimInfC(event.target.value);
-  };
   const limSupAChange = (event) => {
     setLimSupA(event.target.value);
   };
   const limSupBChange = (event) => {
     setLimSupB(event.target.value);
-  };
-  const limSupCChange = (event) => {
-    setLimSupC(event.target.value);
   };
 
   const compAChange = (event) => {
@@ -53,10 +44,6 @@ export default function ArreglosMulti() {
 
   const compBChange = (event) => {
     setCompB(event.target.value);
-  };
-
-  const compCChange = (event) => {
-    setCompC(event.target.value);
   };
 
   const dirBaseChange = (event) => {
@@ -68,16 +55,12 @@ export default function ArreglosMulti() {
   };
 
   /* Localizaciones */
-  const E1 = compA - limInfA;
-  const E2 = compB - limInfB;
-  const E3 = compC - limInfC;
   const L1 = limSupA - limInfA + 1;
   const L2 = limSupB - limInfB + 1;
-  const L3 = limSupC - limInfC + 1;
-  const NTC = L1 * L2 * L3;
+  const NTC = (limSupA - limInfB + 1) * (limSupB - limInfB + 1);
 
-  const fila = (E1 * L2 + E2) * L3 + E3;
-  const columna = (E3 * L2 + E2) * L1 + E1;
+  const fila = L2 * (compA - limInfB) + (compB - limInfA);
+  const columna = L1 * (compB - limInfB) + (compA - limInfA);
 
   return (
     <Container maxWidth="sm">
@@ -89,33 +72,31 @@ export default function ArreglosMulti() {
       >
         <Grid item xs={8}>
           <Typography variant="h3" component="div">
-            Arreglos multidimensionales
+            Arreglos bidimensionales
           </Typography>
           <Chip icon={<AutoAwesomeIcon />} label="Beta" />
           <Typography variant="body1" component="div">
             Herramienta para encontrar la localización de un elemento de un
-            arreglo multidimensional (3 dimensiones) determinado.
+            arreglo bidimensional (2 dimensiones) determinado.
           </Typography>
-          <Button href={process.env.PUBLIC_URL + '/docs/arreglos/estruccomp_p5.pdf'} target="_blank" variant="outlined" startIcon={<PictureAsPdfIcon />}>
+          <Button href={process.env.PUBLIC_URL + '/docs/arreglos/estruccomp_p4.pdf'} target="_blank" variant="outlined" startIcon={<PictureAsPdfIcon />}>
             Leer teoría
           </Button>
           <Typography variant="h6" component="div">
-            L1 = {L1} | L2 = {L2} | L3 = {L3}
+            L1 = {L1} | L2 = {L2}
           </Typography>
           <Typography variant="h6" component="div">
-            E1 = {E1} | E2 = {E2} | E3 = {E3}
+            NTC = {L1}ᵐ * {L2}ⁿ = {NTC}
           </Typography>
           <Typography variant="h6" component="div">
-            NTC = {NTC}
-          </Typography>
-          <Typography variant="h6" component="div">
-          {locMode === "1" && (
+            {locMode === "1" && (
               <>
                 <b>Columna</b>
                 <br />
-                LOC(A[{compA},{compB},{compC}]) = {dirBase} + {wbyte} [({E3} *{" "}
-                {L2} + {E2}) * {L1} + {E1}]<br /> = {dirBase} + {wbyte} [
-                {columna}]<br /> = {dirBase} + {wbyte * columna}
+                LOC(A[{compA},{compB}]) = {dirBase} + {wbyte} [{L2} * ({compA} -{" "}
+                {limInfB}) + ({compB} - {limInfA})]
+                <br /> = {dirBase} + {wbyte} [{columna}]<br /> = {dirBase} +{" "}
+                {wbyte * columna}
                 <br /> = {dirBase + wbyte * columna}
               </>
             )}
@@ -124,8 +105,9 @@ export default function ArreglosMulti() {
               <>
                 <b>Fila</b>
                 <br />
-                LOC(A[{compA},{compB},{compC}]) = {dirBase} + {wbyte} [({E1} *{" "}
-                {L2} + {E2}) * {L3} + {E3}]<br /> = {dirBase} + {wbyte} [{fila}]
+                LOC(A[{compA},{compB}]) = {dirBase} + {wbyte} [{L1} * ({compB} -{" "}
+                {limInfB}) + ({compA} - {limInfA})]
+                <br /> = {dirBase} + {wbyte} [{fila}]
                 <br /> = {dirBase} + {wbyte * fila}
                 <br /> = {dirBase + wbyte * fila}
               </>
@@ -171,22 +153,6 @@ export default function ArreglosMulti() {
                 focused
                 onChange={limSupBChange}
               />
-              <TextField
-                id="limInfC"
-                label="LimInfC"
-                type="number"
-                value={limInfC}
-                focused
-                onChange={limInfCChange}
-              />
-              <TextField
-                id="limSupC"
-                label="LimSupC"
-                type="number"
-                value={limSupC}
-                focused
-                onChange={limSupCChange}
-              />
             </Stack>
             <br />
             <Stack direction="row">
@@ -226,14 +192,6 @@ export default function ArreglosMulti() {
                 value={compB}
                 focused
                 onChange={compBChange}
-              />
-              <TextField
-                id="compC"
-                label="compC (K₃)"
-                type="number"
-                value={compC}
-                focused
-                onChange={compCChange}
               />
             </Stack>
             <br />

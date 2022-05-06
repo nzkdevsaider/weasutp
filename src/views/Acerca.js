@@ -10,7 +10,6 @@ export default function Acerca() {
         direction="column"
         alignItems="center"
         justifyContent="center"
-        style={{ minHeight: "90vh" }}
       >
         <Grid item xs={8}>
           <Typography variant="h3" component="div">
