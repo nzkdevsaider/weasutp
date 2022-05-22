@@ -14,6 +14,7 @@ import { Box } from "@mui/system";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CssBaseline from '@mui/material/CssBaseline';
+import CalculadoraNotaFinal from "./views/CalculadoraNotaFinal";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -74,10 +75,15 @@ function App() {
                 path="/arreglos/unidimensionales"
                 element={<ArreglosUni />}
               />
+              <Route
+                path="/calculadoras/nota-final"
+                element={<CalculadoraNotaFinal />}
+              />
               <Route path="/acerca" element={<Acerca />} />
             </Routes>
           </Grid>
         </Grid>
+        <Box mt={10} />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

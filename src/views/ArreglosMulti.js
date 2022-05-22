@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, Chip, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Chip,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,7 +14,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 export default function ArreglosMulti() {
   const [locMode, setLocMode] = React.useState("1");
@@ -94,9 +101,14 @@ export default function ArreglosMulti() {
           <Chip icon={<AutoAwesomeIcon />} label="Arreglos" />
           <Typography variant="body1" component="div">
             Herramienta para encontrar la localización de un elemento de un
-            arreglo multidimensional (3 dimensiones máximo) determinado.
+            arreglo multidimensional determinado <b>(3 dimensiones máximo).</b>
           </Typography>
-          <Button href={process.env.PUBLIC_URL + '/docs/arreglos/estruccomp_p5.pdf'} target="_blank" variant="outlined" startIcon={<PictureAsPdfIcon />}>
+          <Button
+            href={process.env.PUBLIC_URL + "/docs/arreglos/estruccomp_p5.pdf"}
+            target="_blank"
+            variant="outlined"
+            startIcon={<PictureAsPdfIcon />}
+          >
             Leer teoría
           </Button>
           <Typography variant="h6" component="div">
@@ -109,14 +121,14 @@ export default function ArreglosMulti() {
             NTC = {NTC}
           </Typography>
           <Typography variant="h6" component="div">
-          {locMode === "1" && (
+            {locMode === "1" && (
               <>
                 <b>Columna</b>
                 <br />
                 LOC(A[{compA},{compB},{compC}]) = {dirBase} + {wbyte} [({E3} *{" "}
                 {L2} + {E2}) * {L1} + {E1}]<br /> = {dirBase} + {wbyte} [
                 {columna}]<br /> = {dirBase} + {wbyte * columna}
-                <br /> = {dirBase + wbyte * columna}
+                <br /> = {parseInt(dirBase) + wbyte * columna}
               </>
             )}
 
@@ -127,7 +139,7 @@ export default function ArreglosMulti() {
                 LOC(A[{compA},{compB},{compC}]) = {dirBase} + {wbyte} [({E1} *{" "}
                 {L2} + {E2}) * {L3} + {E3}]<br /> = {dirBase} + {wbyte} [{fila}]
                 <br /> = {dirBase} + {wbyte * fila}
-                <br /> = {dirBase + wbyte * fila}
+                <br /> = {parseInt(dirBase) + wbyte * fila}
               </>
             )}
           </Typography>

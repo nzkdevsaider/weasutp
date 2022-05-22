@@ -97,7 +97,7 @@ export default function ArreglosBi() {
                 {limInfB}) + ({compB} - {limInfA})]
                 <br /> = {dirBase} + {wbyte} [{columna}]<br /> = {dirBase} +{" "}
                 {wbyte * columna}
-                <br /> = {dirBase + wbyte * columna}
+                <br /> = {parseInt(dirBase) + wbyte * columna}
               </>
             )}
 
@@ -109,7 +109,7 @@ export default function ArreglosBi() {
                 {limInfB}) + ({compA} - {limInfA})]
                 <br /> = {dirBase} + {wbyte} [{fila}]
                 <br /> = {dirBase} + {wbyte * fila}
-                <br /> = {dirBase + wbyte * fila}
+                <br /> = {parseInt(dirBase) + wbyte * fila}
               </>
             )}
           </Typography>

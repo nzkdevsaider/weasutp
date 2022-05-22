@@ -1,3 +1,7 @@
+## **0.2.5**
+
+- Se ha arreglado un error que provocaba que algunos números no se sumaran.
+
 ## **0.2.3**
 
 - Se ha agregado el modo oscuro.

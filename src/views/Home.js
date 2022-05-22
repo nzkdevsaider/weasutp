@@ -38,6 +38,8 @@ export default function Home() {
             <Link to="/arreglos/multidimensionales">
               Arreglos multidimensionales
             </Link>
+            <br/>
+              <i><del>Calculadora nota final UTP</del> (próximamente)</i>
           </Typography>
         </Grid>
       </Grid>
